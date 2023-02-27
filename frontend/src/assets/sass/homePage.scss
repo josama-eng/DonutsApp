@@ -1,0 +1,38 @@
+@import "./setup/theme.scss";
+
+
+.homePageComponent{
+    width: 100%;
+    height: 100vh;
+    background:linear-gradient(rgba(245, 241, 241, 0.3),
+    rgba(248, 245, 245, 0.6)), url('../images/background.jpg');
+    @include flex(flex,center,center,row,100px,wrap);
+    background-attachment: fixed;
+    .contentWrapper{
+        width: 40%;
+        h1 {
+            font-size: 80px;
+            line-height:80px;
+            color: $homeTextColor;
+            padding-bottom: 50px;
+        }
+        p {
+            color: $homeTextColor;
+            font-size: 20px;
+            padding-bottom: 30px;
+            font-weight: 500;
+        }
+        .homeBtn {
+            padding: 10px 35px;
+            background: $white;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.5s ease;
+            color: $textColor;
+            &:hover{
+                background: $homeTextColor;
+                color: $white;
+            }
+        }
+    }
+}

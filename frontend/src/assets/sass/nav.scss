@@ -1,0 +1,53 @@
+@import "./setup/theme.scss";
+
+.nav {
+    width: 100%;
+    padding: 10px 50px;
+    position: sticky; /* Set the navbar to fixed position */
+     top: 0;
+     overflow: hidden;
+     background: $white;
+    @include flex(flex,space-between,center,row,0px,wrap);
+    color: $textColor;
+    font-weight: 400;
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+    .middle{
+       @include flex(flex,space-between,center,row,20px,wrap);
+       .navLinks{
+        transition: all 0.5s ease;
+        &:hover {
+            background: $homeTextColor;
+            padding: 10px 20px;
+            color: $white;
+            border-radius: 5px;
+        }
+       }
+    }
+    .end {
+        @include flex(flex,space-between,center,row,20px,wrap);
+        .navLinks{
+            transition: all 0.5s ease;
+            &:hover {
+                background: $homeTextColor;
+                padding: 10px 20px;
+                color: $white;
+                border-radius: 5px;
+            }
+           }
+        .cart {
+            .icon {
+                width: 30px;
+                height: 30px;
+                fill: $homeTextColor;
+            }
+        }
+        
+    }
+    
+}
+hr{
+    color: $blue;
+}

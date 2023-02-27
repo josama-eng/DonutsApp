@@ -1,0 +1,17 @@
+//colors
+$baseRose: #fed8df;
+$blue: #d7e4f6;
+$homeTextColor: #FF7074;
+$white: #fff;
+$textColor: #949393;
+
+//flex mixin
+
+@mixin flex($display,$justify-content,$align-items,$flex-direction,$gap,$flex-wrap){
+    display: $display;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+    gap: $gap;
+    flex-wrap: $flex-wrap;
+}
