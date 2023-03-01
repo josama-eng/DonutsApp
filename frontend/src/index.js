@@ -7,6 +7,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import RegisterPageComponent from "./pages/RegisterPageComponent";
 import HomePage from "./pages/HomePage";
+import ContactUs from "./pages/ContactUs";
+import Login from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPageComponent />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

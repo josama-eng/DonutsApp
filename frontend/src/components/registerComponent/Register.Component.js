@@ -1,4 +1,3 @@
-import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { registerUser } from "../../services/auth.service";
@@ -34,17 +33,13 @@ const RegisterComponent = () => {
         validationSchema={RegisterSchema}
         onSubmit={(values) => {
           registerUser(values)
-            .then((response) => {
-              console.log(response.data);
-              toast.success(
-                "Successfully registered. Please check you mail box."
-              );
-              navigate("/login");
-            })
+            .then((response) => {})
             .catch((error) => {
               console.log(error);
               toast.error(error?.response.data);
             });
+          toast.success("Successfully registered. Please check you mail box.");
+          navigate("/login");
         }}
       >
         {({ error, touched }) => {

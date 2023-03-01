@@ -10,6 +10,8 @@ async function registerUser(req, res) {
   }
 }
 
+//log user
+
 module.exports = {
   registerUser,
 };
