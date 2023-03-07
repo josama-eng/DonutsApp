@@ -1,0 +1,22 @@
+POST http://localhost:3001/categories
+Content-Type: application/json
+
+{
+    "categoryName":"Donuts",
+    "image":"https://img.freepik.com/free-photo/colorful-tasty-donuts_144627-18316.jpg"
+}
+
+###
+
+POST  http://localhost:3001/products
+Content-Type: application/json
+
+{
+    "name":"Caramel ice cream",
+    "description": "This caramel ice cream is a decadent treat that is sure to satisfy any sweet tooth. Its silky texture and luscious caramel flavor make it a great choice for a special dessert or an indulgent snack.",
+    "image":"images/caramelIce.jpg",
+    "price": 12,
+    "categoryId": "64072ceabe7077040b8c2350",
+    "isTop": true
+}
+

@@ -1,0 +1,52 @@
+@import "./setup/theme.scss";
+
+.about {
+width: 100%;
+height: 100%;
+padding: 100px 50px;
+background: $aboutBck;
+@include flex(flex,space-between,center,row,0px,wrap);
+color: $white;
+.content {
+    max-width: 30%;
+    h2{
+        font-size: 35px;
+        padding-bottom: 20px;
+        font-weight: 300;
+    }
+    p {
+        line-height: 2.5rem;
+    }
+}
+.categories{
+    max-width: 60%;
+    display: flex;
+    justify-content: center;
+    .category {
+        max-width: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        margin: 0 20px;
+        h3 {
+            margin: 20px 0;
+            font-size: 27px;
+            transition: all 0.5s ease;
+            &:hover {
+                color: $homeTextColor;
+            }
+        }
+        img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 10px solid $white;
+        }
+        p {
+            line-height: 2rem;
+        }
+        
+    }
+}
+}

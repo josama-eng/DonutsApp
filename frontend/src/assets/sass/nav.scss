@@ -1,53 +1,76 @@
 @import "./setup/theme.scss";
 
-.nav {
-    width: 100%;
-    padding: 10px 50px;
-    position: sticky; /* Set the navbar to fixed position */
-     top: 0;
-     overflow: hidden;
-     background: $white;
+  .container{
+    position:sticky;
+    width:100%;
+    top: 0;
+    @include flex(flex,space-between,center,column,0px,wrap);
+    z-index: 9;
+    background: $white;
+  }
+
+  header{
     @include flex(flex,space-between,center,row,0px,wrap);
-    color: $textColor;
-    font-weight: 400;
-    .logo {
-        width: 80px;
-        height: 80px;
-    }
-    .middle{
-       @include flex(flex,space-between,center,row,20px,wrap);
-       .navLinks{
+    width:100%;
+    padding:0 50px;
+    
+    .menu{    
+      .bars {
+        width:35px;
+        height:35px;
+        cursor:pointer;
         transition: all 0.5s ease;
         &:hover {
-            background: $homeTextColor;
-            padding: 10px 20px;
-            color: $white;
-            border-radius: 5px;
+            fill: $homeTextColor;
         }
-       }
+      }
     }
-    .end {
-        @include flex(flex,space-between,center,row,20px,wrap);
-        .navLinks{
-            transition: all 0.5s ease;
-            &:hover {
-                background: $homeTextColor;
-                padding: 10px 20px;
-                color: $white;
-                border-radius: 5px;
-            }
-           }
-        .cart {
-            .icon {
-                width: 30px;
-                height: 30px;
-                fill: $homeTextColor;
-            }
+    .logo {
+        img {
+            width:95px;
+            height:95px;
         }
-        
     }
-    
-}
-hr{
-    color: $blue;
-}
+  }
+  .menu_container{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color:#000;
+    color:#fff;
+    padding: 50px 0;;
+    @include flex(flex,center,center,column,0px,wrap);
+    li{
+      display:inline-flex;
+      color:#fff;
+      text-decoration: none;
+      height:80px;
+      overflow: hidden;
+      font-size:25px;
+      .cart {
+        width: 35px;
+        height: 35px;
+      }
+      &:hover {
+        color: $homeTextColor;
+      }
+      @media(max-width:768px){
+        font-size:22px;
+      }
+    }
+  
+    .btn_close{
+      @include flex(flex,center,center,column,0px,wrap);
+      width:35px;
+      height:35px;
+      background-color:#fff;
+      color:#000;
+      border-radius: 58px;
+      position:absolute;
+      top:20px;
+      right:20px;
+      z-index:2;
+      cursor:pointer;
+      font-size:18px;
+    }
+  }

@@ -9,6 +9,8 @@ import RegisterPageComponent from "./pages/RegisterPageComponent";
 import HomePage from "./pages/HomePage";
 import ContactUs from "./pages/ContactUs";
 import Login from "./pages/LoginPage";
+import ShopPage from "./pages/ShopPage";
+import CategoryShop from "./pages/CategoryShop";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/shop",
+        element: <ShopPage />,
+      },
+      {
+        path: "/shop/:id",
+        element: <CategoryShop />,
       },
     ],
   },

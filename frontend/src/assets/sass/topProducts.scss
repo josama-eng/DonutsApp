@@ -1,0 +1,55 @@
+@import "./setup/theme.scss";
+
+.topProductsContainer {
+    background: $bodyBck;
+    width: 100%;
+    padding: 30px 50px;
+    @include flex(flex,space-between,center,column,20px,wrap);
+    h2{
+        background: $homeTextColor;
+        display: inline-block;
+        padding: 10px 20px;
+        color: $white;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+.topProducts{
+    width: 100%;
+    @include flex(flex,center,center,row,20px,wrap);
+    .product {
+        width: 25%;
+        padding: 10px;
+        text-align: center;
+        background: rgb(51, 50, 50);
+        border-radius: 10px;
+        h3,h4 {
+            color: $white;
+            padding-bottom: 20px;
+        }
+        h4 {
+            font-size: 20px;
+        }
+        img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 35px;
+            background: $homeTextColor;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.5s ease;
+            color: $white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            &:hover{
+                background: $white;
+                color: rgb(51, 50, 50);
+            }
+        }
+    }
+}
+}

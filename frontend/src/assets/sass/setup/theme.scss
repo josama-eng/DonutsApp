@@ -4,6 +4,8 @@ $blue: #d7e4f6;
 $homeTextColor: #FF7074;
 $white: #fff;
 $textColor: #949393;
+$aboutBck: #555272;
+$bodyBck: #E0E5EB;
 
 //flex mixin
 
@@ -14,4 +16,8 @@ $textColor: #949393;
     flex-direction: $flex-direction;
     gap: $gap;
     flex-wrap: $flex-wrap;
+}
+
+li{
+    list-style: none;
 }

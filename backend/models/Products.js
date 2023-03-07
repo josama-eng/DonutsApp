@@ -10,6 +10,7 @@ const productsSchema = new mongoose.Schema(
     owner: {
       type: ObjectID,
       ref: "User",
+      default: null,
     },
     name: {
       type: String,
@@ -18,10 +19,18 @@ const productsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    images: [String],
+    image: String,
     price: {
       type: Number,
       required: true,
+    },
+    categoryId: {
+      type: String,
+      required: true,
+    },
+    isTop: {
+      type: Boolean,
+      default: false,
     },
   },
   {
