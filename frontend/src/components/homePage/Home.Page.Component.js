@@ -7,7 +7,9 @@ const HomePageComponent = () => {
     <>
       <div className="homePageComponent">
         <div className="contentWrapper">
-          <h1>Sweet Delights: Donuts and Ice Cream Treats</h1>
+          <h1 className="animate__backInLeft">
+            Sweet Delights: Donuts and Ice Cream Treats
+          </h1>
           <p>
             Indulge in our delicious and decadent treats at our online shop! We
             offer a variety of mouthwatering donuts and creamy ice-creams to

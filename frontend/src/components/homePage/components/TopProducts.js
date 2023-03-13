@@ -20,10 +20,15 @@ const TopProducts = () => {
     return topProducts.map((product, index) => {
       return (
         <div className="product" key={index}>
-          <Link to={`/productDetail/${product._id}`} className="linkReset">
-            <h3>{product.name}</h3>
-            <img src={`http://localhost:3001/${product.image}`} alt="" />
-          </Link>
+          <div className="productBody">
+            <Link
+              to={`/productDetail/${product._id}`}
+              className="linkReset productLink"
+            >
+              <h3>{product.name}</h3>
+              <img src={`http://localhost:3001/${product.image}`} alt="" />
+            </Link>
+          </div>
           <h4>${product.price}</h4>
           <button>Add to cart</button>
         </div>
