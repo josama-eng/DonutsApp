@@ -25,8 +25,9 @@ const productsSchema = new mongoose.Schema(
       required: true,
     },
     categoryId: {
-      type: String,
+      type: ObjectID,
       required: true,
+      ref: "Category",
     },
     isTop: {
       type: Boolean,

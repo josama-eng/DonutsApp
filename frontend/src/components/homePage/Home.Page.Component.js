@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import About from "./components/About";
 import TopProducts from "./components/TopProducts";
+import IceCreamComponent from "./components/IceCreamComponent";
 
 const HomePageComponent = () => {
   return (
@@ -24,6 +25,7 @@ const HomePageComponent = () => {
       </div>
       <About />
       <TopProducts />
+      <IceCreamComponent />
     </>
   );
 };

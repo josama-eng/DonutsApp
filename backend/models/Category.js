@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 mongoose.Promise = global.Promise;
 const conn = require("../db/connect");
 const User = require("./User");
+const ObjectID = mongoose.Schema.Types.ObjectID;
 
 const categorySchema = new mongoose.Schema(
   {
@@ -15,6 +16,12 @@ const categorySchema = new mongoose.Schema(
     description: {
       type: String,
     },
+    products: [
+      {
+        type: ObjectID,
+        ref: "Products",
+      },
+    ],
   },
   {
     timestamps: true,
