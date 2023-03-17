@@ -2,8 +2,14 @@ POST http://localhost:3001/categories
 Content-Type: application/json
 
 {
-    "categoryName":"Donuts",
-    "image":"https://img.freepik.com/free-photo/colorful-tasty-donuts_144627-18316.jpg"
+    "categoryName":"Ice Cream",
+    "image":"https://img.freepik.com/free-photo/colorful-tasty-donuts_144627-18316.jpg",
+    "description":"Indulge in our creamy, delicious ice cream flavors today and treat yourself to a sweet escape from the heat. Our handcrafted, premium ice cream is made with only the freshest ingredients and is sure to satisfy your sweet tooth.",
+    "products":[
+        "640796ad2b9fafb98811fe7d",
+        "640797392b9fafb98811fe80",
+        "640797b02b9fafb98811fe83"
+    ]
 }
 
 ###

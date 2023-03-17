@@ -3,6 +3,8 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { sendContactMail } from "../../services/mail.service";
 import { AiOutlinePhone, AiOutlineMail, AiFillHome } from "react-icons/ai";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 //validate form
 const ContactSchema = Yup.object({
@@ -12,6 +14,7 @@ const ContactSchema = Yup.object({
 });
 
 const ContactComponent = () => {
+  const navigate = useNavigate();
   return (
     // <div className="contactWrapper">
     <Formik
@@ -25,10 +28,15 @@ const ContactComponent = () => {
         console.log(values);
         sendContactMail(values)
           .then((response) => {
-            console.log(response.data);
+            if (response.data.accepted) {
+              toast.success(
+                "Your message has been successfully sent. Thank you for getting in touch."
+              );
+              navigate("/");
+            }
           })
           .catch((err) => {
-            console.log(err);
+            toast.error("Something went wrong.Please try later.");
           });
       }}
     >
