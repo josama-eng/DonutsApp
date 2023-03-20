@@ -42,8 +42,13 @@ const NavComponent = () => {
             <img src={Logo} alt="" className="logo" />
           </Link>
         </div>
-        <div className="menu" onClick={isOpen}>
-          <AiOutlineAlignCenter className="bars" />
+        <div className="right">
+          <Link to="/cart" onClick={closeMenu} className="linkReset">
+            <AiOutlineShoppingCart className="cart" />
+          </Link>
+          <div className="menu" onClick={isOpen}>
+            <AiOutlineAlignCenter className="bars" />
+          </div>
         </div>
       </header>
       <AnimatePresence>
@@ -127,23 +132,7 @@ const NavComponent = () => {
                 Login
               </Link>
             </motion.li>
-            <motion.li
-              initial={{ y: 80, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              exit={{
-                opacity: 0,
-                y: 90,
-                transition: {
-                  ease: "easeInOut",
-                  delay: 0.4,
-                },
-              }}
-            >
-              <Link to="/cart" onClick={closeMenu} className="linkReset">
-                <AiOutlineShoppingCart className="cart" />
-              </Link>
-            </motion.li>
+
             <motion.li
               initial={{ y: 80, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}

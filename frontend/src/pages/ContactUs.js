@@ -3,7 +3,7 @@ import ContactComponent from "../components/contactUs/Contact.Component";
 
 const ContactUs = () => {
   return (
-    <div>
+    <div className="contact-wrapper">
       <ContactComponent />
     </div>
   );

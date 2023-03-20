@@ -42,10 +42,28 @@ const ContactComponent = () => {
     >
       {({ error, touched }) => {
         return (
-          <Form>
-            <div className="wrapper">
-              <h2>get in touch</h2>
+          <div className="contact-box">
+            <div className="content">
+              <h2>Contact Us</h2>
               <p>
+                We would love to hear from you! Please don't hesitate to get in
+                touch with us if you have any questions, feedback or concerns.
+                You can reach us by phone, email or by filling out the contact
+                form.
+              </p>
+              <p>
+                If you have a question about an order, please include your order
+                number in your message. For general inquiries, please allow us
+                up to 48 hours to respond.
+              </p>
+              <h3>
+                Thank you for your interest in our products. We look forward to
+                hearing from you!
+              </h3>
+            </div>
+            <div className="row">
+              <Form>
+                {/* <p>
                 <AiOutlinePhone className="icon" /> Phone: +2(02) 2737 6748
               </p>
               <p>
@@ -54,30 +72,40 @@ const ContactComponent = () => {
               <p>
                 <AiFillHome className="icon" /> Address: Bulevar Oslobodjenja
                 22, Novi Sad
-              </p>
-              <div className="row">
-                <Field name="email" placeholder="Email" />
-                <p>
-                  <ErrorMessage name="email" />
-                </p>
+              </p> */}
 
-                <Field name="subject" placeholder="Subject" />
-                <p>
-                  <ErrorMessage name="subject" />
-                </p>
-                <Field
-                  name="textarea"
-                  as="texarea"
-                  placeholder="Message"
-                  component="textarea"
-                />
-                <p>
-                  <ErrorMessage name="textarea" />
-                </p>
-              </div>
-              <button type="submit">Send message</button>
+                <div className="user-box">
+                  <Field name="email" />
+                  <label htmlFor="email">Email</label>
+                  <p>
+                    <ErrorMessage name="email" />
+                  </p>
+                </div>
+
+                <div className="user-box">
+                  <Field name="subject" />
+                  <label htmlFor="subject">Subject</label>
+                  <p>
+                    <ErrorMessage name="subject" />
+                  </p>
+                </div>
+                <div className="user-box">
+                  <Field name="textarea" as="texarea" component="textarea" />
+                  <label htmlFor="textarea">Message</label>
+                  <p>
+                    <ErrorMessage name="textarea" />
+                  </p>
+                </div>
+                <button type="submit">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  Send message
+                </button>
+              </Form>
             </div>
-          </Form>
+          </div>
         );
       }}
     </Formik>
