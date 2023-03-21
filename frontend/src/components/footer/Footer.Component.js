@@ -1,7 +1,7 @@
 import {
   AiOutlinePhone,
   AiOutlineMail,
-  AiFillHome,
+  AiOutlineHome,
   AiOutlineInstagram,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -28,7 +28,8 @@ const FooterComponent = () => {
         <div className="right">
           <p>
             <a href="" className="linkReset footerLink">
-              <AiFillHome className="icon" /> Bulevar Oslobodjenja 22, Novi Sad
+              <AiOutlineHome className="icon" /> Bulevar Oslobodjenja 22, Novi
+              Sad
             </a>
           </p>
           <p>
