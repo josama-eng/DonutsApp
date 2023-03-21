@@ -21,7 +21,7 @@ const About = () => {
         <div className="category" key={index}>
           <img src={category.image} alt="" />
           <h3>
-            <Link to={`/shop/${category._id}`} className="linkReset">
+            <Link to={`/shop/${category._id}`} className="linkReset ctaLink">
               {category.categoryName}
             </Link>
           </h3>

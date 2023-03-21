@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { registerUser } from "../../services/auth.service";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 //validate form
 const RegisterSchema = Yup.object({
@@ -21,63 +21,78 @@ const RegisterSchema = Yup.object({
 const RegisterComponent = () => {
   const navigate = useNavigate();
   return (
-    <div className="formContainer">
-      <Formik
-        initialValues={{
-          email: "",
-          firstName: "",
-          lastName: "",
-          password: "",
-          username: "",
-        }}
-        validationSchema={RegisterSchema}
-        onSubmit={(values) => {
-          registerUser(values)
-            .then((response) => {})
-            .catch((error) => {
-              console.log(error);
-              toast.error(error?.response.data);
-            });
-          toast.success("Successfully registered. Please check you mail box.");
-          navigate("/login");
-        }}
-      >
-        {({ error, touched }) => {
-          return (
+    <Formik
+      initialValues={{
+        email: "",
+        firstName: "",
+        lastName: "",
+        password: "",
+        username: "",
+      }}
+      validationSchema={RegisterSchema}
+      onSubmit={(values) => {
+        registerUser(values)
+          .then((response) => {})
+          .catch((error) => {
+            console.log(error);
+            toast.error(error?.response.data);
+          });
+        toast.success("Successfully registered. Please check you mail box.");
+        navigate("/login");
+      }}
+    >
+      {({ error, touched }) => {
+        return (
+          <div className="register-box">
             <Form>
-              <div className="inputWrapper">
-                <h2>Register</h2>
-                <Field name="email" placeholder="Email" />
+              <div className="user-box">
+                <Field name="email" />
+                <label htmlFor="email">Email</label>
                 <ErrorMessage name="email" />
-
-                <Field name="firstName" placeholder="First name" />
-                <ErrorMessage name="firstName" />
-
-                <Field name="lastName" placeholder="Last name" />
-                <ErrorMessage name="lastName" />
-
-                <Field
-                  className="form-control"
-                  name="username"
-                  placeholder="User name"
-                />
-                <ErrorMessage name="username" />
-
-                <Field
-                  className="form-control"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-                <ErrorMessage name="password" />
-
-                <button type="submit">Register</button>
               </div>
+
+              <div className="user-box">
+                <Field name="firstName" />
+                <label htmlFor="firstName">First name</label>
+                <ErrorMessage name="firstName" />
+              </div>
+
+              <div className="user-box">
+                <Field name="lastName" />
+                <label htmlFor="lastName">Last name</label>
+                <ErrorMessage name="lastName" />
+              </div>
+
+              <div className="user-box">
+                <Field name="username" />
+                <label htmlFor="username">Username</label>
+                <ErrorMessage name="username" />
+              </div>
+
+              <div className="user-box">
+                <Field type="password" name="password" />
+                <label htmlFor="password">Password</label>
+                <ErrorMessage name="password" />
+              </div>
+
+              <button type="submit" className="registerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Register
+              </button>
             </Form>
-          );
-        }}
-      </Formik>
-    </div>
+            <p>
+              Already have an account?
+              <Link to="/login" className="linkReset register">
+                Login
+              </Link>
+            </p>
+          </div>
+        );
+      }}
+    </Formik>
   );
 };
 

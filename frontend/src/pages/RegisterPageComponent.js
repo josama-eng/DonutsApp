@@ -2,7 +2,7 @@ import RegisterComponent from "../components/registerComponent/Register.Componen
 
 const RegisterPageComponent = () => {
   return (
-    <div>
+    <div className="registerWrapper">
       <RegisterComponent />
     </div>
   );
