@@ -63,17 +63,6 @@ const ContactComponent = () => {
             </div>
             <div className="row">
               <Form>
-                {/* <p>
-                <AiOutlinePhone className="icon" /> Phone: +2(02) 2737 6748
-              </p>
-              <p>
-                <AiOutlineMail className="icon" /> Email: donuts22srb@gmail.com
-              </p>
-              <p>
-                <AiFillHome className="icon" /> Address: Bulevar Oslobodjenja
-                22, Novi Sad
-              </p> */}
-
                 <div className="user-box">
                   <Field name="email" />
                   <label htmlFor="email">Email</label>

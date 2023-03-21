@@ -152,6 +152,7 @@ li {
   box-shadow: 0 5px 15px rgba(33, 33, 33, 0.2);
   overflow: hidden;
   font-weight: 700;
+  color: $dark;
   @media screen and (max-width: 1000px) {
     color: $white;
   }
