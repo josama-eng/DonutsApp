@@ -6,7 +6,7 @@ const IceCreamComponent = () => {
         <h2>Did you know?</h2>
         <p>
           Ice cream delivery in specialized freezers is convinient way to enjoy
-          zour favorite frozen treats without having to leave comfort of your
+          your favorite frozen treats without having to leave comfort of your
           home. These specialized freezers are design to keep your ice cream at
           the perfect temperature,ensuring that it stays fresh and delicious.
         </p>

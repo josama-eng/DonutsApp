@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import About from "./components/About";
 import TopProducts from "./components/TopProducts";
 import IceCreamComponent from "./components/IceCreamComponent";
+import SliderComponent from "./components/Slider.Component";
 
 const HomePageComponent = () => {
   return (
@@ -26,6 +27,7 @@ const HomePageComponent = () => {
       <About />
       <TopProducts />
       <IceCreamComponent />
+      <SliderComponent />
     </>
   );
 };
