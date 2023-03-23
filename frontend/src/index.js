@@ -5,6 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+//redux
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import userSlicer from "./redux/user.slicer";
+
+//pages and components
 import RegisterPageComponent from "./pages/RegisterPageComponent";
 import HomePage from "./pages/HomePage";
 import ContactUs from "./pages/ContactUs";
@@ -45,14 +51,18 @@ const router = createBrowserRouter([
   },
 ]);
 
-// const store = configureStore({
-//   reducer: {},
-// });
+const store = configureStore({
+  reducer: {
+    userStore: userSlicer,
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 

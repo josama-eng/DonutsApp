@@ -18,7 +18,6 @@ async function getCategories(req, res) {
     if (!allCategories.length) {
       return res.status(250).send("No categories");
     } else {
-      console.log(allCategories);
       return res.status(200).send(allCategories);
     }
   } catch (error) {

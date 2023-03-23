@@ -1,8 +1,11 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useState, useEffect } from "react";
 import * as Yup from "yup";
-import { registerUser } from "../../services/auth.service";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
+import { loginUser, setUserToLocalStorage } from "../../services/auth.service";
+import { useDispatch } from "react-redux";
+import { saveUser } from "../../redux/user.slicer";
 
 const LoginSchema = Yup.object({
   email: Yup.string().email().required("Email is required"),
@@ -16,6 +19,7 @@ const LoginSchema = Yup.object({
 
 const LoginComponent = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <Formik
       initialValues={{
@@ -23,6 +27,26 @@ const LoginComponent = () => {
         password: "",
       }}
       validationSchema={LoginSchema}
+      onSubmit={(values) => {
+        loginUser(values)
+          .then((response) => {
+            if (response.status === 215) {
+              toast.error(
+                "Warning: Only registered users can log in. Please register to access your account."
+              );
+              navigate("/register");
+            } else {
+              setUserToLocalStorage(response.data);
+              dispatch(saveUser(response.data));
+              toast.success("Successfuly loged in.");
+              navigate("/shop");
+            }
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }}
     >
       {({ error, touched }) => {
         return (
@@ -37,7 +61,7 @@ const LoginComponent = () => {
               </div>
 
               <div className="user-box">
-                <Field name="password" />
+                <Field name="password" type="password" />
                 <label htmlFor="password">Password</label>
                 <p>
                   <ErrorMessage name="password" />

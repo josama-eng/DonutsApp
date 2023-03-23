@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   AiOutlineShoppingCart,
@@ -6,12 +6,26 @@ import {
   AiOutlineClose,
 } from "react-icons/ai";
 import Logo from "../../assets/images/logo.png";
-
+import { removeUserToLocalStorage } from "../../services/auth.service";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSelector } from "react-redux";
+import { removeUser } from "../../redux/user.slicer";
 
 const NavComponent = () => {
   const [open, setOpen] = useState(false);
+  const userStore = useSelector((store) => store.userStore.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(userStore);
+  }, [userStore]);
+
+  const handleLogout = () => {
+    removeUserToLocalStorage();
+    dispatch(removeUser());
+  };
 
   const isOpen = () => {
     setOpen(true);
@@ -128,9 +142,22 @@ const NavComponent = () => {
                 },
               }}
             >
-              <Link to="/login" onClick={closeMenu} className="linkReset">
-                Login
-              </Link>
+              {!userStore?.email ? (
+                <Link to="/login" onClick={closeMenu} className="linkReset">
+                  Login
+                </Link>
+              ) : (
+                <Link
+                  to="/"
+                  onClick={() => {
+                    handleLogout();
+                    closeMenu();
+                  }}
+                  className="linkReset"
+                >
+                  Logout
+                </Link>
+              )}
             </motion.li>
 
             <motion.li
