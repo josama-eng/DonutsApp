@@ -18,10 +18,6 @@ const NavComponent = () => {
   const userStore = useSelector((store) => store.userStore.user);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(userStore);
-  }, [userStore]);
-
   const handleLogout = () => {
     removeUserToLocalStorage();
     dispatch(removeUser());

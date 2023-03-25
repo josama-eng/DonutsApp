@@ -32,13 +32,19 @@ const RegisterComponent = () => {
       validationSchema={RegisterSchema}
       onSubmit={(values) => {
         registerUser(values)
-          .then((response) => {})
+          .then((response) => {
+            if (response.status === 412) {
+              toast.error("User with this email address already exist.");
+            } else if (response.status === 220) {
+              toast.success(
+                "Successfully registered. Please check you mail box."
+              );
+              navigate("/login");
+            }
+          })
           .catch((error) => {
-            console.log(error);
             toast.error(error?.response.data);
           });
-        toast.success("Successfully registered. Please check you mail box.");
-        navigate("/login");
       }}
     >
       {({ error, touched }) => {

@@ -54,3 +54,11 @@
     }
   }
 }
+
+.actvationPage {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  @include flex(flex, center, center, column, 10px, wrap);
+  background: $bodyBck;
+}

@@ -17,6 +17,7 @@ import ContactUs from "./pages/ContactUs";
 import Login from "./pages/LoginPage";
 import ShopPage from "./pages/ShopPage";
 import CategoryShop from "./pages/CategoryShop";
+import ActivationPage from "./pages/ActivationPage";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/shop/:id",
         element: <CategoryShop />,
+      },
+      {
+        path: "/user/activateAccount/:id",
+        element: <ActivationPage />,
       },
     ],
   },

@@ -13,3 +13,6 @@ export const setUserToLocalStorage = (payload) =>
 //remove user from local storage
 export const removeUserToLocalStorage = () =>
   localStorage.removeItem("donutsUser");
+
+//activate account
+export const activateAccount = (id) => axios.put(`/user/activateAccount/${id}`);

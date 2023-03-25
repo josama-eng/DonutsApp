@@ -35,7 +35,9 @@ const LoginComponent = () => {
                 "Warning: Only registered users can log in. Please register to access your account."
               );
               navigate("/register");
-            } else {
+            } else if (response.status === 216) {
+              toast.info("Not active user.Please activate your account.");
+            } else if (response.status === 217) {
               setUserToLocalStorage(response.data);
               dispatch(saveUser(response.data));
               toast.success("Successfuly loged in.");

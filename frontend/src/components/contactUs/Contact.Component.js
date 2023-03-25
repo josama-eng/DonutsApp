@@ -28,11 +28,13 @@ const ContactComponent = () => {
         console.log(values);
         sendContactMail(values)
           .then((response) => {
-            if (response.data.accepted) {
+            if (response.status === 220) {
               toast.success(
                 "Your message has been successfully sent. Thank you for getting in touch."
               );
               navigate("/");
+            } else if (response.status === 412) {
+              toast.error("Something went wrong.Please try later.");
             }
           })
           .catch((err) => {

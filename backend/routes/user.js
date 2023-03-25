@@ -9,4 +9,7 @@ router.post("/register", userController.registerUser);
 //log user
 router.post("/login", userController.logUser);
 
+//actiavte
+router.put("/user/activateAccount/:id", userController.activate);
+
 module.exports = router;
