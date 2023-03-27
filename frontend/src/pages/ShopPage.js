@@ -1,7 +1,11 @@
-import React from "react";
+import ShopPageComponent from "../components/products/ShopPageComponent";
 
 const ShopPage = () => {
-  return <div>ShopPage</div>;
+  return (
+    <div>
+      <ShopPageComponent />
+    </div>
+  );
 };
 
 export default ShopPage;

@@ -25,7 +25,24 @@ async function getCategories(req, res) {
   }
 }
 
+async function categoryProducts(req, res) {
+  let { id } = req.params;
+  try {
+    Category.findOne({ _id: id })
+      .populate("products")
+      .then((response) => {
+        res.status(220).send(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   addCategory,
   getCategories,
+  categoryProducts,
 };

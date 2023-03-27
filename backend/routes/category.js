@@ -11,4 +11,8 @@ router.post("/categories", categoryController.addCategory);
 
 router.get("/categories", categoryController.getCategories);
 
+//get products from category
+
+router.get("/shop/:id", categoryController.categoryProducts);
+
 module.exports = router;

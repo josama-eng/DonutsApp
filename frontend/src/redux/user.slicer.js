@@ -9,7 +9,6 @@ const userSlicer = createSlice({
   initialState: initialState,
   reducers: {
     saveUser(state, action) {
-      console.log("save user", action);
       state.user = action.payload;
     },
     removeUser(state) {

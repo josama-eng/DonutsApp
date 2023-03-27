@@ -1,7 +1,44 @@
-import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { categoryProducts } from "../services/categories.service";
+import { useEffect, useState } from "react";
 
 const CategoryShop = () => {
-  return <div>CategoryShop</div>;
+  const { id } = useParams();
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    categoryProducts(id)
+      .then((response) => {
+        console.log(response.data.products);
+        setProducts(response.data.products);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
+
+  const renderProducts = () => {
+    return products.map((product, index) => {
+      return (
+        <div className="productContainer" key={index}>
+          <Link
+            to={`/productDetails/${product._id}`}
+            className="linkReset productDetailsLink"
+          >
+            <img src={`http://localhost:3001/${product.image}`} alt="" />
+            <h3>{product.name}</h3>
+            <p>{product.price}e</p>
+            <button>
+              <span></span>
+              <span></span>
+              <span></span>
+              Add to cart
+            </button>
+          </Link>
+        </div>
+      );
+    });
+  };
+  return <div className="categoryWrapper">{renderProducts()}</div>;
 };
 
 export default CategoryShop;

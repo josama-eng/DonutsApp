@@ -15,7 +15,6 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(localStorage.getItem("donutsUser"));
     let userLocalStorage = localStorage.getItem("donutsUser");
 
     if (userLocalStorage) {
