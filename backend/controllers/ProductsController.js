@@ -18,7 +18,6 @@ async function getProducts(req, res) {
     if (!allProducts.length) {
       return res.status(400).send("No products in database");
     } else {
-      console.log(allProducts);
       res.send(allProducts);
     }
   } catch (error) {

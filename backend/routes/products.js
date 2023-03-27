@@ -8,7 +8,7 @@ router.post("/products", productsController.addProducts);
 
 //get products
 
-router.get("/products", productsController.getProducts);
+router.get("/products/all", productsController.getProducts);
 
 // get top products
 

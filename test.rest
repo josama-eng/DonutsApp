@@ -18,11 +18,11 @@ POST  http://localhost:3001/products
 Content-Type: application/json
 
 {
-    "name":"Caramel ice cream",
-    "description": "This caramel ice cream is a decadent treat that is sure to satisfy any sweet tooth. Its silky texture and luscious caramel flavor make it a great choice for a special dessert or an indulgent snack.",
-    "image":"images/caramelIce.jpg",
-    "price": 12,
-    "categoryId": "64072ceabe7077040b8c2350",
+    "name":"Caramel donut",
+    "description": "Caramel donuts are coated in a smooth and creamy caramel glaze, made from caramelized sugar and cream. This glaze gives the donut a rich and buttery flavor with a sweet and slightly salty finish. They are a popular treat for those who enjoy sweet and indulgent pastries, and they pair well with a cup of coffee or tea for a satisfying snack or breakfast.",
+    "image":"public/images/slide5.jpg",
+    "price": 3,
+    "categoryId": "640f80e0c2b45987a3b4fb99",
     "isTop": true
 }
 

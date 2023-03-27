@@ -26,6 +26,7 @@
     }
     .productContainer {
       width: 300px;
+      height: 500px;
       position: relative;
       overflow: hidden;
       border-radius: 20px;
@@ -37,6 +38,9 @@
       -moz-box-shadow: 10px 10px 5px 0px rgba(231, 219, 219, 0.75);
       .productDetailsLink {
         @include flex(flex, space-between, center, column, 10px, wrap);
+        h3 {
+          text-align: center;
+        }
         p {
           color: $homeTextColor;
           font-size: 20px;
