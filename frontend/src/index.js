@@ -18,6 +18,7 @@ import Login from "./pages/LoginPage";
 import ShopPage from "./pages/ShopPage";
 import CategoryShop from "./pages/CategoryShop";
 import ActivationPage from "./pages/ActivationPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/user/activateAccount/:id",
         element: <ActivationPage />,
+      },
+      {
+        path: "/productDetails/:id",
+        element: <ProductDetailsPage />,
       },
     ],
   },

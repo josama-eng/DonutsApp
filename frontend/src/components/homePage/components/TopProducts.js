@@ -19,26 +19,29 @@ const TopProducts = () => {
   const renderTopProducts = () => {
     return topProducts.map((product, index) => {
       return (
-        <div className="product" key={index}>
-          <div className="productBody">
-            <Link
-              to={`/productDetail/${product._id}`}
-              className="linkReset productLink"
-            >
-              <h3>{product.name}</h3>
-              <img src={`http://localhost:3001/${product.image}`} alt="" />
-            </Link>
-          </div>
-          <h4>${product.price}</h4>
-          <button>Add to cart</button>
+        <div className="productContainer" key={index}>
+          <Link
+            to={`/productDetails/${product._id}`}
+            className="linkReset productDetailsLink"
+          >
+            <img src={`http://localhost:3001/${product.image}`} alt="" />
+            <h3>{product.name}</h3>
+            <p>{product.price}e</p>
+            <button>
+              <span></span>
+              <span></span>
+              <span></span>
+              Add to cart
+            </button>
+          </Link>
         </div>
       );
     });
   };
   return (
-    <div className="topProductsContainer">
+    <div className="categoryContainer">
       <h2>Our bestselling products</h2>
-      <div className="topProducts">{renderTopProducts()}</div>
+      <div className="categoryWrapper">{renderTopProducts()}</div>
     </div>
   );
 };

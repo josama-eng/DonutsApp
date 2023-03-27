@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 const CategoryShop = () => {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
+  const [title, setTitle] = useState("");
   useEffect(() => {
     categoryProducts(id)
       .then((response) => {
-        console.log(response.data.products);
+        console.log(response.data);
         setProducts(response.data.products);
+        setTitle(response.data.categoryName);
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +40,12 @@ const CategoryShop = () => {
       );
     });
   };
-  return <div className="categoryWrapper">{renderProducts()}</div>;
+  return (
+    <div className="categoryContainer">
+      <h2>{title}</h2>
+      <div className="categoryWrapper">{renderProducts()}</div>
+    </div>
+  );
 };
 
 export default CategoryShop;

@@ -38,8 +38,24 @@ async function getTopProducts(req, res) {
   }
 }
 
+async function productDetails(req, res) {
+  let { id } = req.params;
+  try {
+    const singleProduct = await Products.findOne({ _id: id })
+      .then((response) => {
+        res.status(215).send(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (error) {
+    res.status(416).send(error);
+  }
+}
+
 module.exports = {
   addProducts,
   getProducts,
   getTopProducts,
+  productDetails,
 };

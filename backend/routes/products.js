@@ -14,4 +14,7 @@ router.get("/products", productsController.getProducts);
 
 router.get("/products/top", productsController.getTopProducts);
 
+//get single product
+router.get("/productDetails/:id", productsController.productDetails);
+
 module.exports = router;
