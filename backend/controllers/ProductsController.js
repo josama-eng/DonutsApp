@@ -1,10 +1,25 @@
 const Products = require("../models/Products");
+const Category = require("../models/Category");
 
 // add products
 async function addProducts(req, res) {
   try {
     const newProduct = await Products.create(req.body);
-    newProduct.save();
+    newProduct
+      .save()
+      .then(() => {
+        Category.findById(req.body.categoryId)
+          .then((category) => {
+            category.products.push(newProduct._id);
+            category.save();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   } catch (err) {
     return res.status(400).send(err, "error");
   }
