@@ -19,6 +19,8 @@ import ShopPage from "./pages/ShopPage";
 import CategoryShop from "./pages/CategoryShop";
 import ActivationPage from "./pages/ActivationPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import Cart from "./pages/Cart";
+import cartSlicer from "./redux/cart.slicer";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +59,10 @@ const router = createBrowserRouter([
         path: "/productDetails/:id",
         element: <ProductDetailsPage />,
       },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
     ],
   },
 ]);
@@ -64,6 +70,7 @@ const router = createBrowserRouter([
 const store = configureStore({
   reducer: {
     userStore: userSlicer,
+    cartStore: cartSlicer,
   },
 });
 

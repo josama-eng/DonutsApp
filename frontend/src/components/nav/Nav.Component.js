@@ -17,6 +17,7 @@ const NavComponent = () => {
   const [open, setOpen] = useState(false);
   const userStore = useSelector((store) => store.userStore.user);
   const dispatch = useDispatch();
+  const cartCount = useSelector((store) => store.cartStore.totalCount);
 
   const handleLogout = () => {
     removeUserToLocalStorage();
@@ -53,8 +54,15 @@ const NavComponent = () => {
           </Link>
         </div>
         <div className="right">
-          <Link to="/cart" onClick={closeMenu} className="linkReset">
+          <Link
+            to="/cart"
+            onClick={closeMenu}
+            className="linkReset cartCounter"
+          >
             <AiOutlineShoppingCart className="cart" />
+            <p className="counter">
+              <span>{cartCount}</span>
+            </p>
           </Link>
           <div className="menu" onClick={isOpen}>
             <AiOutlineAlignCenter className="bars" />

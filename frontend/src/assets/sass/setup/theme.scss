@@ -152,6 +152,7 @@ li {
   overflow: hidden;
   font-weight: 700;
   color: $dark;
+  cursor: pointer;
   @media screen and (max-width: 1000px) {
     color: $white;
   }

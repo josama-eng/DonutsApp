@@ -1,9 +1,12 @@
 import { getTopProducts } from "../../../services/products.service";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { addToCart } from "../../../redux/cart.slicer";
+import { useDispatch } from "react-redux";
 
 const TopProducts = () => {
   const [topProducts, setTopProducts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getTopProducts()
@@ -16,6 +19,10 @@ const TopProducts = () => {
       });
   }, [setTopProducts]);
 
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
   const renderTopProducts = () => {
     return topProducts.map((product, index) => {
       return (
@@ -27,13 +34,13 @@ const TopProducts = () => {
             <img src={`http://localhost:3001/${product.image}`} alt="" />
             <h3>{product.name}</h3>
             <p>{product.price}e</p>
-            <button>
-              <span></span>
-              <span></span>
-              <span></span>
-              Add to cart
-            </button>
           </Link>
+          <button onClick={() => handleAddToCart(product)}>
+            <span></span>
+            <span></span>
+            <span></span>
+            Add to cart
+          </button>
         </div>
       );
     });

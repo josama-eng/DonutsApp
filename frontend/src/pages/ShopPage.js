@@ -1,9 +1,12 @@
 import { getAllProducts } from "../services/products.service";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cart.slicer";
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getAllProducts()
@@ -16,6 +19,10 @@ const ShopPage = () => {
       });
   }, [setProducts]);
 
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
   const renderProducts = () => {
     return products.map((product, index) => {
       return (
@@ -27,13 +34,13 @@ const ShopPage = () => {
             <img src={`http://localhost:3001/${product.image}`} alt="" />
             <h3>{product.name}</h3>
             <p>{product.price}e</p>
-            <button>
-              <span></span>
-              <span></span>
-              <span></span>
-              Add to cart
-            </button>
           </Link>
+          <button onClick={() => handleAddToCart(product)}>
+            <span></span>
+            <span></span>
+            <span></span>
+            Add to cart
+          </button>
         </div>
       );
     });

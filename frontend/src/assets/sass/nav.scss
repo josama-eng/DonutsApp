@@ -22,16 +22,37 @@ header {
   }
 
   .right {
-    @include flex(flex, space-between, center, row, 20px, wrap);
-    .cart {
-      width: 35px;
-      height: 35px;
-      fill: $dark;
-      transition: all 0.5s ease;
-      &:hover {
-        fill: $homeTextColor;
+    @include flex(flex, space-between, center, row, 30px, wrap);
+    .cartCounter {
+      position: relative;
+      .counter {
+        position: absolute;
+        top: -20px;
+        left: 32px;
+        background: $homeTextColor;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          color: $dark;
+          font-weight: 400;
+        }
+      }
+      .cart {
+        width: 35px;
+        height: 35px;
+        fill: $dark;
+        transition: all 0.5s ease;
+        &:hover {
+          fill: $homeTextColor;
+        }
       }
     }
+
     .menu {
       .bars {
         fill: $dark;

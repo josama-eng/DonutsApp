@@ -36,10 +36,12 @@
       box-shadow: 10px 10px 5px 0px rgba(231, 219, 219, 0.75);
       -webkit-box-shadow: 10px 10px 5px 0px rgba(231, 219, 219, 0.75);
       -moz-box-shadow: 10px 10px 5px 0px rgba(231, 219, 219, 0.75);
+      @include flex(flex, space-between, center, column, 10px, wrap);
       .productDetailsLink {
-        @include flex(flex, space-between, center, column, 10px, wrap);
-        h3 {
+        h3,
+        p {
           text-align: center;
+          padding: 10px 0;
         }
         p {
           color: $homeTextColor;
@@ -51,14 +53,14 @@
           height: 300px;
           object-fit: cover;
         }
-        button {
-          @include button;
-          margin-bottom: 10px;
-          font-size: 15px;
-          letter-spacing: 1px;
-          margin-top: 10px;
-          text-transform: capitalize;
-        }
+      }
+      button {
+        @include button;
+        margin-bottom: 10px;
+        font-size: 15px;
+        letter-spacing: 1px;
+        margin-top: 10px;
+        text-transform: capitalize;
       }
       &:hover {
         scale: 0.9;

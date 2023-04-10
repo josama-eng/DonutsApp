@@ -29,13 +29,13 @@ const CategoryShop = () => {
             <img src={`http://localhost:3001/${product.image}`} alt="" />
             <h3>{product.name}</h3>
             <p>{product.price}e</p>
-            <button>
-              <span></span>
-              <span></span>
-              <span></span>
-              Add to cart
-            </button>
           </Link>
+          <button>
+            <span></span>
+            <span></span>
+            <span></span>
+            Add to cart
+          </button>
         </div>
       );
     });
