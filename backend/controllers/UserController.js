@@ -1,6 +1,9 @@
 const User = require("../models/User");
 const mailTemplate = require("../template/mail.template");
 const mailService = require("../services/mail.service");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const secretKey = process.env.JWT_SECRET_KEY;
 
 //register user
 async function registerUser(req, res) {
@@ -36,14 +39,25 @@ async function registerUser(req, res) {
 //log user
 async function logUser(req, res) {
   try {
-    User.findOne(req.body)
+    const { email, password } = req.body;
+
+    User.findOne({ email })
       .then((data) => {
+        const validPassword = bcrypt.compare(password, data.password);
         if (!data) {
           res.status(215).send("Bad credentials.");
         } else if (!data.isActive) {
           res.status(216).send("Not active user.");
+        } else if (!validPassword) {
+          return res.status(400).send("Wrong email or password");
         } else {
-          res.status(217).send(data);
+          let ts = new Date().getTime();
+          let token = jwt.sign({ ...data, ts }, secretKey);
+
+          res.status(217).send({
+            user: data,
+            token,
+          });
         }
       })
       .catch((err) => {

@@ -27,21 +27,19 @@ const cartSlicer = createSlice({
           ...action.payload,
           count: action.payload.count || 1,
           cartTotal:
-            action.payload.price * action.payload.count ||
-            action.payload.price * 1,
+            action.payload.price * action.payload.count || action.payload.price,
         });
 
         state.totalPrice +=
-          action.payload.price * action.payload.count ||
-          action.payload.price * 1;
+          action.payload.price * action.payload.count || action.payload.price;
         state.totalCount++;
       } else {
         copyArray[itemIndex].count += action.payload.count || 1;
         state.totalPrice +=
-          action.payload.price * action.payload.count ||
-          action.payload.price * 1;
+          action.payload.price * action.payload.count || action.payload.price;
       }
       state.cart = copyArray;
+      // cartSlicer.caseReducers.updateLocalStorage({ ...state });
     },
     restoreCart: (state, action) => {
       state.cart = action.payload.cart;
@@ -55,21 +53,25 @@ const cartSlicer = createSlice({
       state.cart = copyCart.filter((el) => {
         return el._id !== id;
       });
-      state.totalPrice = subTotal(copyCart);
-      console.log(state.cart);
-      cartSlicer.caseReducers.updateLocalStorage(state);
+
+      const deletedCart = copyCart.find((el) => {
+        return el._id === id;
+      });
+
+      state.totalPrice = state.totalPrice - deletedCart.price;
+      // cartSlicer.caseReducers.updateLocalStorage({ ...state });
     },
 
-    updateLocalStorage: (state) => {
-      localStorage.setItem(
-        "cart",
-        JSON.stringify({
-          cart: state.cart,
-          totalCount: state.totalCount,
-          totalPrice: state.totalPrice,
-        })
-      );
-    },
+    // updateLocalStorage: (state) => {
+    //   localStorage.setItem(
+    //     "cart",
+    //     JSON.stringify({
+    //       cart: state.cart,
+    //       totalCount: state.totalCount,
+    //       totalPrice: state.totalPrice,
+    //     })
+    //   );
+    // },
     setCustomer: (state, action) => {
       state.user = action.payload;
     },
@@ -92,7 +94,7 @@ const cartSlicer = createSlice({
       }
 
       state.cart = copyArray;
-      cartSlicer.caseReducers.updateLocalStorage(state);
+      // cartSlicer.caseReducers.updateLocalStorage(state);
     },
   },
 });

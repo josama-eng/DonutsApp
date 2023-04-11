@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { loginUser, setUserToLocalStorage } from "../../services/auth.service";
 import { useDispatch } from "react-redux";
 import { saveUser } from "../../redux/user.slicer";
+import { setTokenToLocalStorage } from "../../services/auth.service";
 
 const LoginSchema = Yup.object({
   email: Yup.string().email().required("Email is required"),
@@ -38,8 +39,9 @@ const LoginComponent = () => {
             } else if (response.status === 216) {
               toast.info("Not active user.Please activate your account.");
             } else if (response.status === 217) {
-              setUserToLocalStorage(response.data);
-              dispatch(saveUser(response.data));
+              setUserToLocalStorage(response.data.user);
+              dispatch(saveUser(response.data.user));
+              setTokenToLocalStorage(response.data.token);
               toast.success("Successfuly loged in.");
               navigate("/shop");
             }

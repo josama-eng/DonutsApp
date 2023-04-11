@@ -14,5 +14,9 @@ export const setUserToLocalStorage = (payload) =>
 export const removeUserToLocalStorage = () =>
   localStorage.removeItem("donutsUser");
 
+//set token in local storage
+export const setTokenToLocalStorage = (token) =>
+  localStorage.setItem("donuts_token", token);
+
 //activate account
 export const activateAccount = (id) => axios.put(`/user/activateAccount/${id}`);

@@ -10,9 +10,16 @@ import NavComponent from "./components/nav/Nav.Component";
 import FooterComponent from "./components/footer/Footer.Component";
 
 axios.defaults.baseURL = "http://localhost:3001";
+axios.interceptors.request.use((config) => {
+  if (localStorage.hasOwnProperty("donuts_token")) {
+    config.headers.Authorization = localStorage.getItem("donuts_token");
+  }
+  return config;
+});
 
 function App() {
   const dispatch = useDispatch();
+  const [isFinish, setIsFinish] = useState(false);
 
   useEffect(() => {
     let userLocalStorage = localStorage.getItem("donutsUser");
@@ -20,15 +27,18 @@ function App() {
     if (userLocalStorage) {
       dispatch(saveUser(JSON.parse(userLocalStorage)));
     }
+    setIsFinish(true);
   }, []);
 
   return (
-    <div>
-      <ToastContainer />
-      <NavComponent />
-      <Outlet />
-      <FooterComponent />
-    </div>
+    isFinish && (
+      <div>
+        <ToastContainer />
+        <NavComponent />
+        <Outlet />
+        <FooterComponent />
+      </div>
+    )
   );
 }
 
