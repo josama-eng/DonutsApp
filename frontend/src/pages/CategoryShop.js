@@ -1,15 +1,18 @@
 import { Link, useParams } from "react-router-dom";
 import { categoryProducts } from "../services/categories.service";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cart.slicer";
 
 const CategoryShop = () => {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const [title, setTitle] = useState("");
+  const dispatch = useDispatch();
+
   useEffect(() => {
     categoryProducts(id)
       .then((response) => {
-        console.log(response.data);
         setProducts(response.data.products);
         setTitle(response.data.categoryName);
       })
@@ -17,6 +20,10 @@ const CategoryShop = () => {
         console.log(error);
       });
   }, [id]);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
 
   const renderProducts = () => {
     return products.map((product, index) => {
@@ -30,7 +37,7 @@ const CategoryShop = () => {
             <h3>{product.name}</h3>
             <p>{product.price}e</p>
           </Link>
-          <button>
+          <button onClick={() => handleAddToCart(product)}>
             <span></span>
             <span></span>
             <span></span>

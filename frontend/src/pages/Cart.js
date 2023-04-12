@@ -4,10 +4,11 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { setPrice, deleteFromCart } from "../redux/cart.slicer";
 import { BsFillTrashFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const cart = useSelector((store) => store.cartStore.cart);
-  const cartTotal = useSelector((store) => store.cartStore.totalPrice);
+  const cart = useSelector((store) => store.cart.cart);
+  const cartTotal = useSelector((store) => store.cart.totalPrice);
   const dispatch = useDispatch();
 
   const handleDeleteItem = (e, id, index) => {
@@ -55,7 +56,11 @@ const Cart = () => {
     <div className="cartWrapper">
       {renderCartProducts()}
       <p className="totalPrice">Total price: {cartTotal}e</p>
-      <button className="btnCheckout">Checkout</button>
+      <button className="btnCheckout">
+        <Link to="/checkout" className="linkReset">
+          Checkout
+        </Link>
+      </button>
     </div>
   );
 };

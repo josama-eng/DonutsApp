@@ -8,7 +8,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 //redux
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./redux/store";
 import userSlicer from "./redux/user.slicer";
+import cartSlicer from "./redux/cart.slicer";
 
 //pages and components
 import RegisterPageComponent from "./pages/RegisterPageComponent";
@@ -20,7 +23,7 @@ import CategoryShop from "./pages/CategoryShop";
 import ActivationPage from "./pages/ActivationPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Cart from "./pages/Cart";
-import cartSlicer from "./redux/cart.slicer";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const router = createBrowserRouter([
   {
@@ -63,27 +66,23 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
+      {
+        path: "/checkout",
+        element: <CheckoutPage />,
+      },
     ],
   },
 ]);
-
-const store = configureStore({
-  reducer: {
-    userStore: userSlicer,
-    cartStore: cartSlicer,
-  },
-});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

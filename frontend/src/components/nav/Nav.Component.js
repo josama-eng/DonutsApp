@@ -15,9 +15,9 @@ import { removeUser } from "../../redux/user.slicer";
 
 const NavComponent = () => {
   const [open, setOpen] = useState(false);
-  const userStore = useSelector((store) => store.userStore.user);
+  const userStore = useSelector((store) => store.user.user);
   const dispatch = useDispatch();
-  const cartCount = useSelector((store) => store.cartStore.totalCount);
+  const cartCount = useSelector((store) => store.cart.totalCount);
 
   const handleLogout = () => {
     removeUserToLocalStorage();

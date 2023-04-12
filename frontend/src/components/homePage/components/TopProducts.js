@@ -12,7 +12,6 @@ const TopProducts = () => {
     getTopProducts()
       .then((response) => {
         setTopProducts(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);

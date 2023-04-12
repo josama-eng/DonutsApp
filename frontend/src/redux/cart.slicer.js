@@ -59,19 +59,8 @@ const cartSlicer = createSlice({
       });
 
       state.totalPrice = state.totalPrice - deletedCart.price;
-      // cartSlicer.caseReducers.updateLocalStorage({ ...state });
     },
 
-    // updateLocalStorage: (state) => {
-    //   localStorage.setItem(
-    //     "cart",
-    //     JSON.stringify({
-    //       cart: state.cart,
-    //       totalCount: state.totalCount,
-    //       totalPrice: state.totalPrice,
-    //     })
-    //   );
-    // },
     setCustomer: (state, action) => {
       state.user = action.payload;
     },
@@ -94,7 +83,6 @@ const cartSlicer = createSlice({
       }
 
       state.cart = copyArray;
-      // cartSlicer.caseReducers.updateLocalStorage(state);
     },
   },
 });

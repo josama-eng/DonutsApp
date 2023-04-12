@@ -11,7 +11,7 @@ const ProductDetailsPage = () => {
   const { id } = useParams();
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
-  const cart = useSelector((store) => store.cartStore.cart);
+  const cart = useSelector((store) => store.cart.cart);
 
   useEffect(() => {
     productDetails(id)
