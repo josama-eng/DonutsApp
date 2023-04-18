@@ -25,7 +25,7 @@
       padding: 20px 0;
     }
     .productContainer {
-      width: 300px;
+      width: 450px;
       height: 500px;
       position: relative;
       overflow: hidden;
@@ -37,11 +37,28 @@
       -webkit-box-shadow: 10px 10px 5px 0px rgba(231, 219, 219, 0.75);
       -moz-box-shadow: 10px 10px 5px 0px rgba(231, 219, 219, 0.75);
       @include flex(flex, space-between, center, column, 10px, wrap);
+      @media screen and (max-width: 1026px) {
+        width: 250px;
+      }
+      @media screen and (max-width: 730px) {
+        width: 300px;
+      }
+      @media screen and (max-width: 700px) {
+        width: 400px;
+      }
+      @media screen and (max-width: 500px) {
+        width: 250px;
+      }
       .productDetailsLink {
         h3,
         p {
           text-align: center;
           padding: 10px 0;
+        }
+        h3 {
+          @media screen and (max-width: 1026px) {
+            font-size: 15px;
+          }
         }
         p {
           color: $homeTextColor;
@@ -49,9 +66,21 @@
           font-weight: 700;
         }
         img {
-          width: 300px;
+          width: 450px;
           height: 300px;
           object-fit: cover;
+          @media screen and (max-width: 1026px) {
+            width: 250px;
+          }
+          @media screen and (max-width: 730px) {
+            width: 300px;
+          }
+          @media screen and (max-width: 700px) {
+            width: 400px;
+          }
+          @media screen and (max-width: 500px) {
+            width: 250px;
+          }
         }
       }
       button {
@@ -69,15 +98,5 @@
         scale: 0.9;
       }
     }
-  }
-}
-
-@keyframes rotBGimg {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }
