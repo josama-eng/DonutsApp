@@ -24,6 +24,8 @@ import ActivationPage from "./pages/ActivationPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Cart from "./pages/Cart";
 import CheckoutPage from "./pages/CheckoutPage";
+import PaymentPage from "./pages/PaymentPage";
+import Order from "./pages/Order";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +71,14 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <CheckoutPage />,
+      },
+      {
+        path: "/payment",
+        element: <PaymentPage />,
+      },
+      {
+        path: "/order",
+        element: <Order />,
       },
     ],
   },

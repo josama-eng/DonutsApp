@@ -42,9 +42,9 @@ const cartSlicer = createSlice({
       // cartSlicer.caseReducers.updateLocalStorage({ ...state });
     },
     restoreCart: (state, action) => {
-      state.cart = action.payload.cart;
-      state.totalPrice = action.payload.totalPrice;
-      state.totalCount = action.payload.totalCount;
+      state.cart = initialState.cart;
+      state.totalPrice = initialState.totalPrice;
+      state.totalCount = initialState.totalCount;
     },
     deleteFromCart: (state, action) => {
       let { id, index } = action.payload;
@@ -93,6 +93,7 @@ function subTotal(cart) {
   }, 0);
 }
 
-export const { addToCart, deleteFromCart, setPrice } = cartSlicer.actions;
+export const { addToCart, deleteFromCart, setPrice, setCustomer, restoreCart } =
+  cartSlicer.actions;
 
 export default cartSlicer.reducer;

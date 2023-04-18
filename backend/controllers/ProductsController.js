@@ -1,5 +1,7 @@
 const Products = require("../models/Products");
 const Category = require("../models/Category");
+const stripe = require("stripe");
+const stripeObj = stripe(process.env.STRIPE_SECRET_KEY);
 
 // add products
 async function addProducts(req, res) {
@@ -52,6 +54,8 @@ async function getTopProducts(req, res) {
   }
 }
 
+//product detalis
+
 async function productDetails(req, res) {
   let { id } = req.params;
   try {
@@ -67,9 +71,26 @@ async function productDetails(req, res) {
   }
 }
 
+//stripe payment
+
+async function stripePayment(req, res) {
+  try {
+    const paymentIntent = await stripeObj.paymentIntents.create({
+      amount: req.body.amount,
+      currency: req.body.currency,
+      payment_method_types: ["card"],
+    });
+    res.send(paymentIntent.client_secret);
+  } catch (e) {
+    res.status(410).send(e);
+    console.log(e);
+  }
+}
+
 module.exports = {
   addProducts,
   getProducts,
   getTopProducts,
   productDetails,
+  stripePayment,
 };

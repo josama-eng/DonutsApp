@@ -1,0 +1,21 @@
+@import "./setup/theme.scss";
+
+.orderWrapper {
+  width: 100%;
+  min-height: 100vh;
+  @include flex(flex, center, center, row, 0px, wrap);
+  background: $bodyBck;
+}
+.paymentContainer {
+  width: 100%;
+  min-height: 100vh;
+  background: $bodyBck;
+  @include flex(flex, center, center, column, 0px, wrap);
+  .StripeElement {
+    width: 50%;
+  }
+  button {
+    margin-top: 30px;
+    @include Btn;
+  }
+}

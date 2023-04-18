@@ -7,6 +7,7 @@ const userRoute = require("./routes/user");
 const productsRoute = require("./routes/products");
 const categoriesRoute = require("./routes/category");
 const mailRoute = require("./routes/mail");
+const orderRoute = require("./routes/order");
 require("./db/connect");
 mongoose.set("strictQuery", false);
 
@@ -21,6 +22,7 @@ server.use(userRoute);
 server.use(productsRoute);
 server.use(categoriesRoute);
 server.use(mailRoute);
+server.use(orderRoute);
 
 server.listen(port, (error) => {
   if (error) {

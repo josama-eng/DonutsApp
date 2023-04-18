@@ -61,11 +61,14 @@
       padding: 10px 0;
     }
     button {
-      @include button;
+      @include Btn;
       letter-spacing: 1px;
       margin-top: 20px;
       text-transform: capitalize;
       font-size: 18px;
+      &::before {
+        background: $homeTextColor;
+      }
     }
   }
 }

@@ -5,16 +5,30 @@ import { useEffect, useState } from "react";
 import { setPrice, deleteFromCart } from "../redux/cart.slicer";
 import { BsFillTrashFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const cart = useSelector((store) => store.cart.cart);
   const cartTotal = useSelector((store) => store.cart.totalPrice);
+  const user = useSelector((store) => store.user.user);
   const dispatch = useDispatch();
 
+  const [redirectUrl, setRedirectUrl] = useState("");
   const handleDeleteItem = (e, id, index) => {
     e.stopPropagation();
     dispatch(deleteFromCart({ id, index }));
   };
+
+  useEffect(() => {
+    if (user === null) {
+      setRedirectUrl("/login");
+      toast.info("Please login or register before checkout", {
+        toastId: "login-info",
+      });
+    } else {
+      setRedirectUrl("/checkout");
+    }
+  }, [user]);
 
   const renderCartProducts = () => {
     return cart?.map((product, index) => {
@@ -57,7 +71,7 @@ const Cart = () => {
       {renderCartProducts()}
       <p className="totalPrice">Total price: {cartTotal}e</p>
       <button className="btnCheckout">
-        <Link to="/checkout" className="linkReset">
+        <Link to={redirectUrl} className="linkReset">
           Checkout
         </Link>
       </button>

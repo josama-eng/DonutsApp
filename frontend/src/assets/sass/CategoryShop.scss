@@ -55,12 +55,15 @@
         }
       }
       button {
-        @include button;
+        @include Btn;
         margin-bottom: 10px;
         font-size: 15px;
         letter-spacing: 1px;
         margin-top: 10px;
         text-transform: capitalize;
+        &::before {
+          background: $homeTextColor;
+        }
       }
       &:hover {
         scale: 0.9;
