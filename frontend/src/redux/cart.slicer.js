@@ -49,6 +49,7 @@ const cartSlicer = createSlice({
     deleteFromCart: (state, action) => {
       let { id, index } = action.payload;
       let copyCart = [...state.cart];
+
       state.totalCount--;
       state.cart = copyCart.filter((el) => {
         return el._id !== id;
@@ -58,7 +59,8 @@ const cartSlicer = createSlice({
         return el._id === id;
       });
 
-      state.totalPrice = state.totalPrice - deletedCart.price;
+      state.totalPrice =
+        state.totalPrice - deletedCart.price * deletedCart.count;
     },
 
     setCustomer: (state, action) => {

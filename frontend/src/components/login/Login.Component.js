@@ -1,5 +1,4 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useState, useEffect } from "react";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
@@ -37,12 +36,14 @@ const LoginComponent = () => {
               );
               navigate("/register");
             } else if (response.status === 216) {
-              toast.info("Not active user.Please activate your account.");
+              toast.info(
+                "You are not an active user. Please activate your account."
+              );
             } else if (response.status === 217) {
               setUserToLocalStorage(response.data.user);
               dispatch(saveUser(response.data.user));
               setTokenToLocalStorage(response.data.token);
-              toast.success("Successfuly loged in.");
+              toast.success("You have successfully logged in.");
               navigate("/shop");
             }
             console.log(response);

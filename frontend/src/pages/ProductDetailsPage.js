@@ -1,9 +1,8 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { productDetails } from "../services/products.service";
 import { addToCart } from "../redux/cart.slicer";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -14,7 +13,6 @@ const ProductDetailsPage = () => {
   const { id } = useParams();
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
-  const cart = useSelector((store) => store.cart.cart);
 
   const [ref, inView] = useInView();
   const titleRef = useRef(null);

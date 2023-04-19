@@ -48,6 +48,7 @@ const ShopPage = () => {
   return (
     <div className="categoryContainer">
       <h2>Shop</h2>
+
       <div className="categoryWrapper">{renderProducts()}</div>
     </div>
   );

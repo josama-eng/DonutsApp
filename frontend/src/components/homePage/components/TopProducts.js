@@ -1,5 +1,5 @@
 import { getTopProducts } from "../../../services/products.service";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../../redux/cart.slicer";
 import { useDispatch } from "react-redux";

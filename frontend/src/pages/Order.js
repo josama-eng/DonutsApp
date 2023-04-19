@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { restoreCart } from "../redux/cart.slicer";
 import { placeOrder } from "../services/order.service";
-import { setCustomer } from "../redux/cart.slicer";
 
 const Order = () => {
   const [redirectStatus, setRedirectStatus] = useState("");
