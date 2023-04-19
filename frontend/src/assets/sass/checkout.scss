@@ -23,6 +23,9 @@
     button {
       @include Btn;
       margin-top: 20px;
+      @media screen and (max-width: 1000px) {
+        color: #333232;
+      }
     }
     .user-box {
       position: relative;

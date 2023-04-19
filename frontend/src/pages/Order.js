@@ -46,14 +46,16 @@ const Order = () => {
       <p>
         You have successfully placed your order. You will receive a notification
         on the phone number you provided when creating the order when our
-        courier arrives at your address.
+        courier arrives at your address.Thank you for your purchase.
       </p>
     );
   };
   return (
     <div className="orderWrapper">
-      <h2>Order completed. Thank you for buying our products.</h2>
-      {renderMessage()}
+      <div className="content">
+        <h2>Your order have been recived.</h2>
+        {renderMessage()}
+      </div>
     </div>
   );
 };

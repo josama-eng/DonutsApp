@@ -1,9 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getCategories } from "../../../services/categories.service";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const About = () => {
   const [categories, setCategories] = useState([]);
+  const [ref, inView] = useInView();
+  const imageRef = useRef(null);
 
   useEffect(() => {
     getCategories()
@@ -19,7 +23,13 @@ const About = () => {
     return categories.map((category, index) => {
       return (
         <div className="category" key={index}>
-          <img src={category.image} alt="" />
+          <motion.img
+            src={category.image}
+            animate={{ rotate: inView ? 360 : 0 }}
+            transition={{ duration: 1 }}
+            ref={ref}
+            alt=""
+          />
 
           <h3>
             <Link to={`/shop/${category._id}`} className="linkReset ctaLink">
@@ -33,7 +43,12 @@ const About = () => {
   };
   return (
     <div className="about">
-      <div className="content">
+      <motion.div
+        className="content"
+        animate={{ opacity: inView ? 1 : 0 }}
+        transition={{ duration: 1.7 }}
+        ref={ref}
+      >
         <h2>What We Do</h2>
         <p>
           Welcome to our online shop, where you can discover the perfect balance
@@ -43,7 +58,7 @@ const About = () => {
           unique combinations, we've got something for everyone. So go ahead and
           satisfy your cravings by ordering now - you won't regret it!
         </p>
-      </div>
+      </motion.div>
       <div className="categories">{renderCategories()}</div>
     </div>
   );

@@ -5,6 +5,9 @@ import { addToCart } from "../redux/cart.slicer";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useRef } from "react";
 
 const ProductDetailsPage = () => {
   const [singleProduct, setSingleProduct] = useState({});
@@ -12,6 +15,14 @@ const ProductDetailsPage = () => {
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
   const cart = useSelector((store) => store.cart.cart);
+
+  const [ref, inView] = useInView();
+  const titleRef = useRef(null);
+
+  const variants = {
+    hidden: { x: "100%" },
+    visible: { x: 0 },
+  };
 
   useEffect(() => {
     productDetails(id)
@@ -37,11 +48,18 @@ const ProductDetailsPage = () => {
 
   const renderProduct = () => {
     return (
-      <div className="singleProductContainer">
+      <div className="singleProductContainer" style={{ overflow: "hidden" }}>
         <div className="img">
           <img src={`http://localhost:3001/${singleProduct?.image}`} alt="" />
         </div>
-        <div className="content">
+        <motion.div
+          className="content"
+          variants={variants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={{ duration: 1 }}
+          ref={ref}
+        >
           <h3>{singleProduct?.name}</h3>
           <p>{singleProduct?.description}</p>
           <p className="price">Price: {singleProduct?.price}e</p>
@@ -65,7 +83,7 @@ const ProductDetailsPage = () => {
             <span></span>
             Add To Cart
           </button>
-        </div>
+        </motion.div>
       </div>
     );
   };
