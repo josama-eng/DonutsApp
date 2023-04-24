@@ -13,6 +13,7 @@ const CategoryShop = () => {
   useEffect(() => {
     categoryProducts(id)
       .then((response) => {
+        console.log(response.data);
         setProducts(response.data.products);
         setTitle(response.data.categoryName);
       })

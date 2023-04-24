@@ -1,23 +1,57 @@
 import { getAllProducts } from "../services/products.service";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import {
+  Link,
+  useNavigate,
+  useSearchParams,
+  useParams,
+} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cart.slicer";
+import { toast } from "react-toastify";
+import { searchProducts } from "../services/products.service";
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const params = useParams();
+  const [queryParams, setQueryParams] = useSearchParams();
 
-  useEffect(() => {
+  const onSearch = () => {
+    searchProducts(params.search.replaceAll("-", " "))
+      .then((response) => {
+        console.log(response);
+
+        if (response.status === 209) {
+          navigate("/");
+          toast.warning("No results found");
+        } else {
+          setProducts(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const loadAllProducts = () => {
     getAllProducts()
       .then((response) => {
-        console.log(response.data);
         setProducts(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [setProducts]);
+  };
+
+  useEffect(() => {
+    if (!params.search) {
+      loadAllProducts();
+    } else {
+      onSearch();
+    }
+  }, [products]);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));

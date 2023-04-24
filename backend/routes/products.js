@@ -21,4 +21,7 @@ router.get("/productDetails/:id", productsController.productDetails);
 //stripe payment
 router.post("/payment", verifyToken, productsController.stripePayment);
 
+//search products
+router.post("/products/search", productsController.searchProducts);
+
 module.exports = router;

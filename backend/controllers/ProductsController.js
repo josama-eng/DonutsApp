@@ -87,10 +87,27 @@ async function stripePayment(req, res) {
   }
 }
 
+async function searchProducts(req, res) {
+  Products.find({
+    name: { $regex: req.body.search, $options: "i" },
+  })
+    .then((data) => {
+      if (!data || !data.length) {
+        return res.status(209).send("no results");
+      }
+      res.send(data);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(415).send("error on search.");
+    });
+}
+
 module.exports = {
   addProducts,
   getProducts,
   getTopProducts,
   productDetails,
   stripePayment,
+  searchProducts,
 };

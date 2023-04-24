@@ -18,11 +18,11 @@ POST  http://localhost:3001/products
 Content-Type: application/json
 
 {
-    "name":"Coffe donut",
-    "description": "Coffee doughnuts are a great option for coffee lovers. These doughnuts are covered in a coffee glaze and sprinkled with finely ground coffee.",
-    "image":"public/images/coffe.jpg",
-    "price": 3,
-    "categoryId": "640f80e0c2b45987a3b4fb99",
+    "name":"Banana ice cream",
+    "description": "Banana ice cream is a delicious frozen dessert made from ripe bananas. It is a healthier alternative to traditional ice cream as it contains no added sugar or dairy. The bananas are frozen, then blended until they form a creamy, smooth consistency. This dessert is perfect for those who are looking for a sweet treat without the guilt. It can also be customized with various toppings such as chocolate chips, nuts, or fresh fruit. Banana ice cream is a tasty way to indulge in a frozen treat while still maintaining a healthy lifestyle.",
+    "image":"public/images/bananaIceCream.jpg",
+    "price": 2,
+    "categoryId": "640f8169c2b45987a3b4fba0",
     "isTop": false
 }
 

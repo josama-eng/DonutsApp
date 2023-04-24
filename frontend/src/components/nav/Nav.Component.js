@@ -12,6 +12,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
 import { removeUser } from "../../redux/user.slicer";
+import SearchComponent from "./SearchComponent";
 
 const NavComponent = () => {
   const [open, setOpen] = useState(false);
@@ -54,6 +55,7 @@ const NavComponent = () => {
           </Link>
         </div>
         <div className="right">
+          <SearchComponent />
           <Link
             to="/cart"
             onClick={closeMenu}

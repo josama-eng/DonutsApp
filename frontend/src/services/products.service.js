@@ -7,3 +7,6 @@ export const productDetails = (id) => axios.get(`/productDetails/${id}`);
 export const getAllProducts = () => axios.get("/products/all");
 
 export const initPayment = (payload) => axios.post("/payment", payload);
+
+export const searchProducts = (search) =>
+  axios.post("/products/search", { search: search });

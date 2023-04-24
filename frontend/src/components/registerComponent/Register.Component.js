@@ -54,31 +54,41 @@ const RegisterComponent = () => {
               <div className="user-box">
                 <Field name="email" />
                 <label htmlFor="email">Email</label>
-                <ErrorMessage name="email" />
+                <p>
+                  <ErrorMessage name="email" />
+                </p>
               </div>
 
               <div className="user-box">
                 <Field name="firstName" />
                 <label htmlFor="firstName">First name</label>
-                <ErrorMessage name="firstName" />
+                <p>
+                  <ErrorMessage name="firstName" />
+                </p>
               </div>
 
               <div className="user-box">
                 <Field name="lastName" />
                 <label htmlFor="lastName">Last name</label>
-                <ErrorMessage name="lastName" />
+                <p>
+                  <ErrorMessage name="lastName" />
+                </p>
               </div>
 
               <div className="user-box">
                 <Field name="username" />
                 <label htmlFor="username">Username</label>
-                <ErrorMessage name="username" />
+                <p>
+                  <ErrorMessage name="username" />
+                </p>
               </div>
 
               <div className="user-box">
                 <Field type="password" name="password" />
                 <label htmlFor="password">Password</label>
-                <ErrorMessage name="password" />
+                <p>
+                  <ErrorMessage name="password" />
+                </p>
               </div>
 
               <button type="submit" className="registerBtn">

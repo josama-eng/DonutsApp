@@ -32,7 +32,10 @@ const About = () => {
           />
 
           <h3>
-            <Link to={`/shop/${category._id}`} className="linkReset ctaLink">
+            <Link
+              to={`/category/${category._id}`}
+              className="linkReset ctaLink"
+            >
               {category.categoryName}
             </Link>
           </h3>

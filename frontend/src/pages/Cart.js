@@ -70,6 +70,7 @@ const Cart = () => {
     <div className="cartWrapper">
       {renderCartProducts()}
       <p className="totalPrice">Total price: {cartTotal}e</p>
+
       <button className="btnCheckout">
         <Link to={redirectUrl} className="linkReset">
           Checkout
