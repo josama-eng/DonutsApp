@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export const getTopProducts = () => axios.get("/products/top");
+export const getTopProducts = () => axios.get("/api/products/top");
 
-export const productDetails = (id) => axios.get(`/productDetails/${id}`);
+export const productDetails = (id) => axios.get(`/api/productDetails/${id}`);
 
-export const getAllProducts = () => axios.get("/products/all");
+export const getAllProducts = () => axios.get("/api/products/all");
 
-export const initPayment = (payload) => axios.post("/payment", payload);
+export const initPayment = (payload) => axios.post("/api/payment", payload);
 
 export const searchProducts = (search) =>
-  axios.post("/products/search", { search: search });
+  axios.post("/api/products/search", { search: search });

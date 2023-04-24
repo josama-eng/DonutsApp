@@ -1,10 +1,10 @@
 import axios from "axios";
 
 //register user
-export const registerUser = (payload) => axios.post("/register", payload);
+export const registerUser = (payload) => axios.post("/api/register", payload);
 
 //login user
-export const loginUser = (payload) => axios.post("/login", payload);
+export const loginUser = (payload) => axios.post("/api/login", payload);
 
 //set user in local storage
 export const setUserToLocalStorage = (payload) =>
@@ -19,4 +19,5 @@ export const setTokenToLocalStorage = (token) =>
   localStorage.setItem("donuts_token", token);
 
 //activate account
-export const activateAccount = (id) => axios.put(`/user/activateAccount/${id}`);
+export const activateAccount = (id) =>
+  axios.put(`/api/user/activateAccount/${id}`);
