@@ -9,7 +9,7 @@ import { saveUser } from "./redux/user.slicer";
 import NavComponent from "./components/nav/Nav.Component";
 import FooterComponent from "./components/footer/Footer.Component";
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://donuts.herokuapp.com/";
 axios.interceptors.request.use((config) => {
   if (localStorage.hasOwnProperty("donuts_token")) {
     config.headers.Authorization = localStorage.getItem("donuts_token");

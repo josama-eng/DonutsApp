@@ -30,7 +30,7 @@ const TopProducts = () => {
             to={`/productDetails/${product._id}`}
             className="linkReset productDetailsLink"
           >
-            <img src={`http://localhost:3001/${product.image}`} alt="" />
+            <img src={`https://donuts.herokuapp.com/${product.image}`} alt="" />
             <h3>{product.name}</h3>
             <p>{product.price}e</p>
           </Link>

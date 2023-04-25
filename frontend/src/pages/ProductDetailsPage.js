@@ -48,7 +48,10 @@ const ProductDetailsPage = () => {
     return (
       <div className="singleProductContainer" style={{ overflow: "hidden" }}>
         <div className="img">
-          <img src={`http://localhost:3001/${singleProduct?.image}`} alt="" />
+          <img
+            src={`https://donuts.herokuapp.com/${singleProduct?.image}`}
+            alt=""
+          />
         </div>
         <motion.div
           className="content"
