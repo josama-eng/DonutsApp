@@ -17,7 +17,7 @@ const PaymentComponent = ({ ck }) => {
     stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/order",
+        return_url: "https://whimsical-scone-36891d.netlify.app/order",
       },
     });
   };

@@ -34,7 +34,7 @@ const Cart = () => {
     return cart?.map((product, index) => {
       return (
         <div className="cartProduct" key={index}>
-          <img src={`http://localhost:3001/${product.image}`} alt="" />
+          <img src={`https://donuts.herokuapp.com/${product.image}`} alt="" />
           <div className="content">
             <h3>{product.name}</h3>
 
