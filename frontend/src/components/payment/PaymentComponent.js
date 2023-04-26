@@ -17,7 +17,7 @@ const PaymentComponent = ({ ck }) => {
     stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "https://timely-stardust-3f57ec.netlify.app/order",
+        return_url: "https://stalwart-nougat-a2bd57.netlify.apporder",
       },
     });
   };
